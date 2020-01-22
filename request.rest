@@ -8,7 +8,7 @@ GET http://localhost:5000/api
 
 
 ### Login
-POST https://sih-ccm-2020.herokuapp.com/api/login
+POST http://localhost:5000/api/login
 Content-Type: application/json
 
 {

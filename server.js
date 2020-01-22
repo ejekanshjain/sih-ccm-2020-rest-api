@@ -258,7 +258,6 @@ app.post('/api/hearings', (req, res) => {
 
 
 app.get('/', (req, res) => {
-    db.query('SELECT * FROM users', (err, results) => console.log(results))
     res.status(200).send(`Server up and running...`)
 })
 
