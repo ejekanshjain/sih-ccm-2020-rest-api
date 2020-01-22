@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
+const fetch = require('node-fetch')
 const app = express()
 
 const db = require('./db/db')
@@ -167,6 +168,89 @@ app.delete('/api/clients/:id', (req, res) => {
         if (err) throw err
     })
     res.status(200).send(JSON.stringify({ status: "200", message: "Deleted Lawyer Successfully" }))
+})
+
+// Get all Case / by client id and lawyer id
+app.get('/api/cases', (req, res) => {
+    let sql = `SELECT * FROM cases`
+    if (req.query.client) sql += ` WHERE clientId = '${req.query.client}'`
+    if (req.query.lawyer) sql += ` WHERE lawyerId = '${req.query.lawyer}'`
+    db.query(sql, (err, results) => {
+        if (err) throw err
+        res.status(200).send(JSON.stringify({ status: "200", response: results }))
+    })
+})
+
+// Get case by id
+app.get('/api/cases/:id', (req, res) => {
+    let sql = `SELECT * FROM cases WHERE id = '${req.params.id}'`
+    db.query(sql, (err, results) => {
+        if (err) throw err
+        res.status(200).send(JSON.stringify({ status: "200", response: results }))
+    })
+})
+
+// Add case
+app.post('/api/cases', (req, res) => {
+    let caseObj = {
+        id: `case-${utilities.randomID()}`,
+        fileId: req.body.fileId,
+        type: req.body.type,
+        lawyerId: req.body.lawyerId,
+        clientId: req.body.clientId,
+        createdAt: utilities.Now()
+    }
+    let sql = `INSERT INTO cases SET ?`
+    db.query(sql, caseObj, (err, results) => {
+        if (err) throw err
+        res.status(201).send(JSON.stringify({ status: "200", message: "Added Case" }))
+    })
+    let obj = {
+        name: req.body.name,
+        email: req.body.email,
+        phoneNumber: req.body.phoneNumber,
+        aadharNumber: req.body.aadharNumber
+    }
+    obj = JSON.stringify(obj)
+    fetch('http://localhost:5000/api/clients', {
+        method: "POST",
+        body: obj,
+        headers: { 'Content-Type': 'application/json' }
+    }).then().then()
+})
+
+// Get all hearings / by case id
+app.get('/api/hearings', (req, res) => {
+    let sql = `SELECT * FROM hearings`
+    if (req.query.case) sql = `SELECT * FROM cases INNER JOIN hearings WHERE cases.id = '${req.query.case}'`
+    db.query(sql, (err, results) => {
+        if (err) throw err
+        res.status(200).send(JSON.stringify({ status: "200", response: results }))
+    })
+})
+
+// Get hearing by id
+app.get('/api/hearings/:id', (req, res) => {
+    let sql = `SELECT * FROM hearings WHERE id = '${req.query.id}'`
+    db.query(sql, (err, results) => {
+        if (err) throw err
+        res.status(200).send(JSON.stringify({ status: "200", response: results }))
+    })
+})
+
+// Add hearing
+app.post('/api/hearings', (req, res) => {
+    let hearingObj = {
+        id: `hearing-${utilities.randomID()}`,
+        caseId: req.body.caseId,
+        summary: req.body.summary,
+        createdAt: utilities.Now()
+    }
+    let sql = `INSERT INTO hearings SET ?`
+    db.query(sql, caseObj, (err, results) => {
+        if (err) throw err
+        res.status(201).send(JSON.stringify({ status: "200", message: "Added Case" }))
+    })
 })
 
 // End of Main APIS

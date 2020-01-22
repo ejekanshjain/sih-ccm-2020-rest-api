@@ -12,12 +12,12 @@ POST http://localhost:5000/api/login
 Content-Type: application/json
 
 {
-    "email": "nayan9462@gmail.com",
-    "password": "IbaEInC4"
+    "email": "admin@admin.com",
+    "password": "password"
 }
 
 
-### Get all Cleints
+### Get all Clients
 GET http://localhost:5000/api/clients
 
 
@@ -58,4 +58,17 @@ Content-Type: application/json
 }
 
 
-###
+### Add case
+POST http://localhost:5000/api/cases
+Content-Type: application/json
+
+{
+    "email": "eje1kanshjain@gmail.com",
+    "name": "Ekansh Jain",
+    "phoneNumber": 9530077351,
+    "aadharNumber": 123456789012,
+    "fileId": "fp30f99v",
+    "type": "murder",
+    "lawyerId": "lawyer-6969",
+    "clientId": "client-in3Fl0vu1p6fmqWocE8r2fxNpb2Eg1o5"
+}
