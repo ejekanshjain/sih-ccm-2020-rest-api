@@ -210,7 +210,7 @@ app.post('/api/cases', (req, res) => {
 // Get all hearings / by case id
 app.get('/api/hearings', (req, res) => {
     let sql = `SELECT * FROM hearings`
-    if (req.query.case) sql = `SELECT * FROM cases INNER JOIN hearings WHERE cases.id = '${req.query.case}'`
+    if (req.query.case) sql = `SELECT id, cases.id as caseId, summary, hearings.createdAt as hearingCreatedAt FROM cases INNER JOIN hearings WHERE cases.id = '${req.query.case}'`
     db.query(sql, (err, results) => {
         if (err) throw err
         res.status(200).send(JSON.stringify({ status: "200", response: results }))
