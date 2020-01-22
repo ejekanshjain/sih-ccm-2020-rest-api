@@ -80,12 +80,12 @@ app.post('/api/lawyers', (req, res) => {
         let sql1 = `INSERT INTO users SET ?`
         db.query(sql1, userObj, (err, results) => {
             if (err) throw err
+            let sql2 = `INSERT INTO lawyers SET ?`
+            db.query(sql2, lawyerObj, (err, results) => {
+                if (err) throw err
+                res.status(201).send(JSON.stringify({ status: "201", message: "Added Lawyer Successfully" }))
+            })
         })
-        let sql2 = `INSERT INTO lawyers SET ?`
-        db.query(sql2, lawyerObj, (err, results) => {
-            if (err) throw err
-        })
-        res.status(201).send(JSON.stringify({ status: "201", message: "Added Lawyer Successfully" }))
     })
 })
 
@@ -148,12 +148,12 @@ app.post('/api/clients', (req, res) => {
         let sql1 = `INSERT INTO users SET ?`
         db.query(sql1, userObj, (err, results) => {
             if (err) throw err
+            let sql2 = `INSERT INTO clients SET ?`
+            db.query(sql2, clientObj, (err, results) => {
+                if (err) throw err
+                res.status(201).send(JSON.stringify({ status: "201", message: "Added Client Successfully" }))
+            })
         })
-        let sql2 = `INSERT INTO clients SET ?`
-        db.query(sql2, clientObj, (err, results) => {
-            if (err) throw err
-        })
-        res.status(201).send(JSON.stringify({ status: "201", message: "Added Client Successfully" }))
     })
 })
 

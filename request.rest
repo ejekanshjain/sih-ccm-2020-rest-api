@@ -50,11 +50,11 @@ POST http://localhost:5000/api/lawyers
 Content-Type: application/json
 
 {
-    "email": "nayan94621@gmail.com",
+    "email": "nayan946212@gmail.com",
     "name": "Nayan Sharma",
-    "phoneNumber": 9079512345,
-    "aadharNumber": 123456789012,
-    "license": 12345678
+    "phoneNumber": 907951345,
+    "aadharNumber": 12345789012,
+    "license": 1234567
 }
 
 
