@@ -183,7 +183,7 @@ app.get('/api/cases', (req, res) => {
 
 // Get case by id
 app.get('/api/cases/:id', (req, res) => {
-    let sql = `SELECT * FROM cases WHERE id = '${req.params.id}'`
+    let sql = `SELECT cases.id as id, fileId, type, lawyerId, clientId, createdAt, clients.name as clientName, lawyers.name as lawyerName, clients.email as clientEmail, lawyers.email as lawyerEmail, clients.phoneNumber as clientPhoneNumber, lawyers.phoneNumber as lawyerPhoneNumber FROM cases INNER JOIN clients ON clients.id = cases.clientId INNER JOIN lawyers ON lawyers.id = cases.lawyerId WHERE cases.id = '${req.params.id}'`
     db.query(sql, (err, results) => {
         if (err) throw err
         res.status(200).send(JSON.stringify({ status: "200", response: results }))
