@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2020 at 05:53 AM
+-- Generation Time: Jan 22, 2020 at 06:32 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -62,6 +62,15 @@ CREATE TABLE `roles` (
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`) VALUES
+(1, 'admin'),
+(2, 'lawyer'),
+(3, 'client');
+
 -- --------------------------------------------------------
 
 --
@@ -74,6 +83,13 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `role` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `email`, `password`, `role`) VALUES
+('admin', 'admin@admin.com', 'password', 1);
 
 --
 -- Indexes for dumped tables
