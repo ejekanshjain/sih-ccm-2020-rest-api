@@ -11,12 +11,15 @@ app.use(bodyParser.json())
 
 const port = process.env.PORT || 3000
 
+app.post('/api/login', (req, res) => {
+})
+
 app.get('/', (req, res) => {
-    res.status(200).send(`Server up and running`)
+    res.status(200).send(`Server up and running...`)
 })
 
 app.get('/api', (req, res) => {
-    res.status(200).send(`API server up and running`)
+    res.status(200).send(`API server up and running...`)
 })
 
 
