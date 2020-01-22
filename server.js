@@ -8,7 +8,7 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
-const port = process.env.PORT
+const port = process.env.PORT || 3000
 
 const conn = mysql.createConnection({
     host: process.env.DB_HOST || 'localhost',
