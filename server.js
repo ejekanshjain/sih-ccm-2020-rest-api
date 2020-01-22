@@ -21,6 +21,14 @@ conn.connect(err => {
     console.log('DB connected...')
 })
 
+app.get('/', (req, res) => {
+    res.status(200).send(`Server up and running`)
+})
+
+app.get('/api', (req, res) => {
+    res.status(200).send(`API server up and running`)
+})
+
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}...`)
