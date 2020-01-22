@@ -205,18 +205,6 @@ app.post('/api/cases', (req, res) => {
         if (err) throw err
         res.status(201).send(JSON.stringify({ status: "200", message: "Added Case" }))
     })
-    let obj = {
-        name: req.body.name,
-        email: req.body.email,
-        phoneNumber: req.body.phoneNumber,
-        aadharNumber: req.body.aadharNumber
-    }
-    obj = JSON.stringify(obj)
-    fetch('http://localhost:5000/api/clients', {
-        method: "POST",
-        body: obj,
-        headers: { 'Content-Type': 'application/json' }
-    }).then().then()
 })
 
 // Get all hearings / by case id

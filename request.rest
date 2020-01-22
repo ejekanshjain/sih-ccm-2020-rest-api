@@ -63,12 +63,11 @@ POST http://localhost:5000/api/cases
 Content-Type: application/json
 
 {
-    "email": "eje1kanshjain@gmail.com",
-    "name": "Ekansh Jain",
-    "phoneNumber": 9530077351,
-    "aadharNumber": 123456789012,
     "fileId": "fp30f99v",
     "type": "murder",
     "lawyerId": "lawyer-6969",
     "clientId": "client-in3Fl0vu1p6fmqWocE8r2fxNpb2Eg1o5"
 }
+
+
+###
