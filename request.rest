@@ -12,8 +12,49 @@ POST http://localhost:5000/api/login
 Content-Type: application/json
 
 {
-    "email": "admin@admin.com",
-    "password": "admin123"
+    "email": "nayan9462@gmail.com",
+    "password": "IbaEInC4"
+}
+
+
+### Get all Cleints
+GET http://localhost:5000/api/clients
+
+
+### Get lawyer by id
+GET http://localhost:5000/api/clients/client-in3Fl0vu1p6fmqWocE8r2fxNpb2Eg1o5
+
+
+### Add Client
+POST http://localhost:5000/api/clients
+Content-Type: application/json
+
+{
+    "email": "ejekanshjain@gmail.com",
+    "name": "Ekansh Jain",
+    "phoneNumber": 9530077351,
+    "aadharNumber": 123456789012
+}
+
+
+### Get all lawyers
+GET http://localhost:5000/api/lawyers
+
+
+### Get lawyer by id
+GET http://localhost:5000/api/lawyers/lawyer-vau2naXRtxJ6X0jnbq74MX5I9CEDCBTi
+
+
+### Add Lawyer
+POST http://localhost:5000/api/lawyers
+Content-Type: application/json
+
+{
+    "email": "nayan94621@gmail.com",
+    "name": "Nayan Sharma",
+    "phoneNumber": 9079512345,
+    "aadharNumber": 123456789012,
+    "license": 12345678
 }
 
 
