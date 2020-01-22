@@ -172,7 +172,7 @@ app.delete('/api/clients/:id', (req, res) => {
 
 // Get all Case / by client id and lawyer id
 app.get('/api/cases', (req, res) => {
-    let sql = `SELECT * FROM cases INNER JOIN clients ON clients.id = cases.clientId INNER JOIN lawyers ON lawyers.id = cases.lawyerId`
+    let sql = `SELECT cases.id as id, fileId, type, lawyerId, clientId, createdAt, clients.name as clientName, lawyers.name as lawyerName FROM cases INNER JOIN clients ON clients.id = cases.clientId INNER JOIN lawyers ON lawyers.id = cases.lawyerId`
     if (req.query.client) sql += ` WHERE clientId = '${req.query.client}'`
     if (req.query.lawyer) sql += ` WHERE lawyerId = '${req.query.lawyer}'`
     db.query(sql, (err, results) => {
